@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 import me.leandronovak.movies.R
 import me.leandronovak.movies.data.model.Movie
@@ -29,11 +30,11 @@ class MoviesAdapter(
         itemView: View,
         private val onItemClickListener: ((movie: Movie) -> Unit)
     ) : RecyclerView.ViewHolder(itemView) {
-        private val title = itemView.textTitle
+        private val posterImageView = itemView.poster_image_view
 
         fun bindView(movie: Movie) {
-            title.text = movie.title
-
+            //title.text = movie.title
+            Picasso.get().load(movie.posterUrl).into(posterImageView)
             itemView.setOnClickListener{
                 onItemClickListener.invoke(movie)
             }

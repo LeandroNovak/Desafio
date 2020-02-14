@@ -13,7 +13,6 @@ class MoviesViewModel : ViewModel() {
     val moviesLiveData: MutableLiveData<List<Movie>> = MutableLiveData()
 
     fun getMovies() {
-        // TODO: Move to a repository
         ApiService.movieService.getMoviesList().enqueue(object : Callback<List<MovieResponse>> {
             override fun onResponse(
                 call: Call<List<MovieResponse>>,

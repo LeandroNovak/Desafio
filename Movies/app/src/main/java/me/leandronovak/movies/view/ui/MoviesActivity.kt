@@ -3,8 +3,7 @@ package me.leandronovak.movies.view.ui
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_movies.*
 import kotlinx.android.synthetic.main.toolbar.*
 import me.leandronovak.movies.R
@@ -25,8 +24,8 @@ class MoviesActivity : BaseActivity() {
         viewModel.moviesLiveData.observe(this, Observer {
             it?.let {movies ->
                 with(recyclerMovies) {
-                    layoutManager = LinearLayoutManager(
-                        this@MoviesActivity, RecyclerView.VERTICAL, false
+                    layoutManager = GridLayoutManager(
+                        this@MoviesActivity, 3
                     )
 
                     setHasFixedSize(true)

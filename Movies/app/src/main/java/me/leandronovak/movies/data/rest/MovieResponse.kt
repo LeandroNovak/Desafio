@@ -27,8 +27,10 @@ data class MovieResponse(
     @Json(name = "status")
     val status: String?
 ) {
+    //TODO: Update default posterUrl
     fun getMovieModel() = Movie (
         id = this.id,
-        title = this.title ?: "Title"
+        title = this.title ?: "Title",
+        posterUrl = this.posterUrl ?: "NotFound"
     )
 }
