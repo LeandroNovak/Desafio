@@ -8,5 +8,6 @@ open class BaseActivity : AppCompatActivity() {
         toolbar.title = title
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(showHomeUp)
+
     }
 }

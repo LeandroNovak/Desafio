@@ -5,22 +5,26 @@ import androidx.lifecycle.ViewModel
 import me.leandronovak.movies.data.ApiService
 import me.leandronovak.movies.data.model.Movie
 import me.leandronovak.movies.data.rest.MovieResponse
-import retrofit2.Callback
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class MoviesViewModel : ViewModel() {
-    val moviesLiveData: MutableLiveData<List<Movie>> = MutableLiveData()
+    val moviesLiveData: MutableLiveData<ArrayList<Movie>> = MutableLiveData()
+    val isLoading: MutableLiveData<Boolean> = MutableLiveData()
 
     fun getMovies() {
-        ApiService.movieService.getMoviesList().enqueue(object : Callback<List<MovieResponse>> {
+        isLoading.value = true
+        ApiService.movieService.getMoviesList().enqueue(object :Callback<List<MovieResponse>> {
             override fun onResponse(
                 call: Call<List<MovieResponse>>,
                 response: Response<List<MovieResponse>>
             ) {
+                //Thread.sleep(5000)
+
                 when {
                     response.isSuccessful -> {
-                        val movies: MutableList<Movie> = mutableListOf()
+                        val movies = ArrayList<Movie>()
 
                         response.body()?.let { movieListResponse ->
                             for (resultItem in movieListResponse) {
@@ -28,7 +32,8 @@ class MoviesViewModel : ViewModel() {
                                 movies.add(movie)
                             }
 
-                            moviesLiveData.value = movies
+                            moviesLiveData.postValue(movies)
+                            isLoading.value = false
                         }
                     }
                     //TODO: Implement failure

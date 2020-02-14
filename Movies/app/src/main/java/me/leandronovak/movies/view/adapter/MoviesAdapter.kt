@@ -3,39 +3,49 @@ package me.leandronovak.movies.view.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_movie.view.*
+import me.leandronovak.movies.BR
 import me.leandronovak.movies.R
 import me.leandronovak.movies.data.model.Movie
+import me.leandronovak.movies.databinding.ItemMovieBinding
 
 class MoviesAdapter(
-    private val movies: List<Movie>,
+    private var moviesList: List<Movie>,
     private val onItemClickListener: ((movie: Movie) -> Unit)
 ) : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_movie, parent, false)
-
         return MoviesViewHolder(itemView, onItemClickListener)
     }
 
-    override fun getItemCount() = movies.count()
-
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
-        holder.bindView(movies[position])
+        val movie = moviesList[position]
+        holder.bind(moviesList[position])
+        holder.binding?.setVariable(BR.movie, movie)
+        holder.binding?.executePendingBindings()
+    }
+
+    override fun getItemCount() = moviesList.count()
+
+    fun setList(movieList: List<Movie>) {
+        this.moviesList = movieList
+        notifyDataSetChanged()
     }
 
     class MoviesViewHolder(
         itemView: View,
         private val onItemClickListener: ((movie: Movie) -> Unit)
     ) : RecyclerView.ViewHolder(itemView) {
-        private val posterImageView = itemView.poster_image_view
 
-        fun bindView(movie: Movie) {
-            //title.text = movie.title
-            Picasso.get().load(movie.posterUrl).into(posterImageView)
-            itemView.setOnClickListener{
+        val binding: ItemMovieBinding? = DataBindingUtil.bind(itemView)
+
+        fun bind(movie: Movie) {
+            binding?.movie = movie
+
+            itemView.setOnClickListener {
                 onItemClickListener.invoke(movie)
             }
         }
