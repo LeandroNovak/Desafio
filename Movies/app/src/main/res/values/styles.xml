@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/colorBackground</item>
         <item name="android:textViewStyle">@style/TextView</item>
+
     </style>
 
     <style name="TextView">
@@ -15,7 +16,7 @@
     </style>
 
     <style name="ToolbarTheme">
-        <item name="android:background">@android:color/transparent</item>
+        <item name="android:background">@color/colorPrimary</item>
         <item name="colorControlNormal">@color/toolbar_up_color</item>
     </style>
 

@@ -5,6 +5,6 @@
     <color name="colorAccent">#AAAAAA</color>
 
     <color name="colorBackground">#212121</color>
-    <color name="colorText">#000000</color>
+    <color name="colorText">#FFFFFF</color>
     <color name="toolbar_up_color">#FFFFFF</color>
 </resources>

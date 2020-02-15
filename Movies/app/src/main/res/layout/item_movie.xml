@@ -4,9 +4,7 @@
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
-
         <import type="android.view.View" />
-
         <variable
             name="movie"
             type="me.leandronovak.movies.data.model.Movie" />
@@ -30,6 +28,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@{movie.title}"
             android:scaleType="fitCenter"
-            bind:poster="@{movie.posterUrl}" />
+            bind:image="@{movie.posterUrl}"
+            />
     </androidx.cardview.widget.CardView>
 </layout>

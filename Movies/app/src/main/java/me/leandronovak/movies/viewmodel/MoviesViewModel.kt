@@ -15,13 +15,12 @@ class MoviesViewModel : ViewModel() {
 
     fun getMovies() {
         isLoading.value = true
+
         ApiService.movieService.getMoviesList().enqueue(object :Callback<List<MovieResponse>> {
             override fun onResponse(
                 call: Call<List<MovieResponse>>,
                 response: Response<List<MovieResponse>>
             ) {
-                //Thread.sleep(5000)
-
                 when {
                     response.isSuccessful -> {
                         val movies = ArrayList<Movie>()

@@ -1,5 +1,6 @@
 package me.leandronovak.movies.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import me.leandronovak.movies.data.ApiService

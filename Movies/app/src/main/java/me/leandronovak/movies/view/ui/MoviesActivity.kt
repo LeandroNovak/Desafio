@@ -21,11 +21,12 @@ class MoviesActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_movies)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_movies)
         moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
         binding.viewModel = moviesViewModel
+        binding.setLifecycleOwner { this.lifecycle }
+        binding.executePendingBindings()
 
         setupToolbar(toolbarMain, getString(R.string.movies_title))
         setRecyclerView()

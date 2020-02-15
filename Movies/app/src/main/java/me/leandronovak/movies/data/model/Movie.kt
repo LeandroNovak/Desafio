@@ -7,13 +7,17 @@ import com.squareup.picasso.Picasso
 data class Movie(
     val id: Int,
     val title: String,
-    val posterUrl: String
+    val posterUrl: String,
+    val backdropUrl: String,
+    val voteAverage: Double
 ) {
     companion object {
         @JvmStatic
-        @BindingAdapter("poster")
-        fun bindPoster(imageView: ImageView, url: String) {
-            Picasso.get().load(url).into(imageView)
+        @BindingAdapter("image")
+        fun bindImage(imageView: ImageView, url: String?) {
+            if (url != null) {
+                Picasso.get().load(url).into(imageView)
+            }
         }
     }
 }

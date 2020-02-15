@@ -1,52 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.ui.MovieDetailsActivity"
-    android:orientation="vertical">
+    xmlns:bind="http://schemas.android.com/tools">
 
-    <include layout="@layout/toolbar"/>
+    <data>
 
-    <!--id for debug-->
-    <TextView
-        android:id="@+id/movie_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="id"/>
+        <import type="android.view.View" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="poster_url"/>
+        <variable
+            name="viewModel"
+            type="me.leandronovak.movies.viewmodel.MovieDetailsViewModel" />
+    </data>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="title"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="release_date"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="vote_average"/>
+            <include layout="@layout/toolbar" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="overview"/>
+            <RelativeLayout
+                android:id="@+id/backdrop_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="genres"/>
+                <ImageView
+                    android:id="@+id/backdrop_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/backdrop_description"
+                    android:scaleType="fitCenter"
+                    bind:image="@{viewModel.movieLiveData.backdropUrl}"
+                    bind:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                <ImageView
+                    android:id="@+id/poster_image_view"
+                    android:layout_width="120dp"
+                    android:layout_height="180dp"
+                    android:layout_below="@+id/backdrop_image_view"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="-90dp"
+                    android:contentDescription="@string/poster_description"
+                    bind:image="@{viewModel.movieLiveData.posterUrl}"
+                    bind:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/backdrop_image_view"
+                    android:textSize="20sp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/poster_image_view"
+                    android:text="AAAAAAAAAAAAAAA"/>
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/poster_image_view"
+                    android:text="Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope."
+                    />
 
 
-
-</LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

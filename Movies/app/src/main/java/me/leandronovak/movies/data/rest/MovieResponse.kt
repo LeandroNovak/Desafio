@@ -31,6 +31,8 @@ data class MovieResponse(
     fun getMovieModel() = Movie (
         id = this.id,
         title = this.title ?: "Title",
-        posterUrl = this.posterUrl ?: "NotFound"
+        posterUrl = this.posterUrl ?: "NotFound",
+        backdropUrl = this.backdropUrl ?: "NotFound",
+        voteAverage = this.voteAverage ?: 0.0
     )
 }

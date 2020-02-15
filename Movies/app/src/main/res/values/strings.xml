@@ -2,4 +2,6 @@
     <string name="app_name">Movies</string>
 
     <string name="movies_title">Movies</string>
+    <string name="backdrop_description">Backdrop</string>
+    <string name="poster_description">Poster</string>
 </resources>
