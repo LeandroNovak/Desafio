@@ -9,7 +9,11 @@ data class Movie(
     val title: String,
     val posterUrl: String,
     val backdropUrl: String,
-    val voteAverage: Double
+    val voteAverage: Double,
+    val genres: List<String>,
+    val originalTitle: String,
+    val overview: String,
+    val releaseDate: String
 ) {
     companion object {
         @JvmStatic
