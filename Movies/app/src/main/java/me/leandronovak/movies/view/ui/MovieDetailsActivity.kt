@@ -31,7 +31,7 @@ class MovieDetailsActivity : BaseActivity() {
         binding.setLifecycleOwner { this.lifecycle }
         binding.executePendingBindings()
 
-        setupToolbar(toolbarMain, id.toString(), true)
+        setupToolbar(toolbarMain, showHomeUp = true)
 
         movieDetailsViewModel.getMovie(id)
     }

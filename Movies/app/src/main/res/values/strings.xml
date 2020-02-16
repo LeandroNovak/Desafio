@@ -2,6 +2,11 @@
     <string name="app_name">Movies</string>
 
     <string name="movies_title">Movies</string>
+
     <string name="backdrop_description">Backdrop</string>
     <string name="poster_description">Poster</string>
+    <string name="facts">Facts</string>
+    <string name="original_title">Original Title</string>
+    <string name="release_date">Release Date</string>
+    <string name="vote_average">Vote Average</string>
 </resources>

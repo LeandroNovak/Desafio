@@ -28,13 +28,13 @@ data class MovieResponse(
     //TODO: Update default posterUrl
     fun getMovieModel() = Movie (
         id = this.id,
-        title = this.title ?: "",
-        posterUrl = this.posterUrl ?: "",
-        backdropUrl = this.backdropUrl ?: "",
-        voteAverage = this.voteAverage ?: 0.0,
+        title = this.title ?: "Unavailable",
+        posterUrl = this.posterUrl ?: "Unavailable",
+        backdropUrl = this.backdropUrl ?: "Unavailable",
+        voteAverage = this.voteAverage.toString(),
         genres = this.genres ?: emptyList(),
-        originalTitle = this.originalTitle ?: "",
-        overview = this.overview ?: "",
-        releaseDate = this.releaseDate ?: ""
+        originalTitle = this.originalTitle ?: "Unavailable",
+        overview = this.overview ?: "Unavailable",
+        releaseDate = this.releaseDate ?: "Unavailable"
     )
 }
