@@ -1,7 +1,6 @@
 package me.leandronovak.movies.viewmodel
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import me.leandronovak.movies.data.ApiService
@@ -40,6 +39,7 @@ class MovieDetailsViewModel : ViewModel() {
         })
     }
 
+    // Carrega a lista de filmes relacionados com base nos gêneros em comum
     fun getRelatedMovies() {
         isLoading.value = true
         ApiService.movieService.getMoviesList().enqueue(object : Callback<List<MovieResponse>> {

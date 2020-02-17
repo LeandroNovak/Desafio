@@ -42,7 +42,7 @@ class MoviesViewModel : ViewModel() {
 
             override fun onFailure(call: Call<List<MovieResponse>>, t: Throwable) {
                 error.value = t.message
-                Log.e("GET MOVIES", t.message?: "")
+                Log.e("GET MOVIES", t.message ?: "")
             }
         })
     }

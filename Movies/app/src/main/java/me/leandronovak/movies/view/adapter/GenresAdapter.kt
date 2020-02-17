@@ -3,11 +3,9 @@ package me.leandronovak.movies.view.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_genre.view.*
 import me.leandronovak.movies.R
-import me.leandronovak.movies.data.model.Movie
 
 class GenresAdapter(private var items: List<String>) :
     RecyclerView.Adapter<GenresAdapter.GenresViewHolder>() {

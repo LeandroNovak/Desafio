@@ -3,6 +3,7 @@ package me.leandronovak.movies.util
 import android.app.Application
 import android.content.Context
 
+// Classe criada para armazenar o contexto
 class GlobalApplication : Application() {
     init {
         instance = this
@@ -11,7 +12,7 @@ class GlobalApplication : Application() {
     companion object {
         private var instance: GlobalApplication? = null
 
-        fun getContext() : Context {
+        fun getContext(): Context {
             return instance!!.applicationContext
         }
     }

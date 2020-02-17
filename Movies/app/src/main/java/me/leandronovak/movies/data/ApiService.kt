@@ -8,6 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 object ApiService {
+    // Inicializa o retrofit habilitando cache
     private fun initRetrofit(): Retrofit {
         val context = GlobalApplication.getContext()
 

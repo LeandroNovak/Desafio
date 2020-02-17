@@ -19,6 +19,7 @@ data class Movie(
     val overview: String,
     val releaseDate: String
 ) {
+    // Companion object com funções auxiliares para binding nos layout xml
     companion object {
         @JvmStatic
         @BindingAdapter("image")

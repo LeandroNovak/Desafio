@@ -7,28 +7,25 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import kotlinx.android.synthetic.main.activity_movie_details.*
-import kotlinx.android.synthetic.main.activity_movies.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import me.leandronovak.movies.R
 import me.leandronovak.movies.databinding.ActivityMovieDetailsBinding
 import me.leandronovak.movies.view.adapter.GenresAdapter
-import me.leandronovak.movies.view.adapter.MoviesAdapter
 import me.leandronovak.movies.view.adapter.RelatedMoviesAdapter
 import me.leandronovak.movies.view.ui.base.BaseActivity
 import me.leandronovak.movies.viewmodel.MovieDetailsViewModel
 
 class MovieDetailsActivity : BaseActivity() {
-    private var id = 0
     private lateinit var movieDetailsViewModel: MovieDetailsViewModel
-    lateinit var binding: ActivityMovieDetailsBinding
-    private lateinit var genresAdapter: GenresAdapter
     private lateinit var relatedMoviesAdapter: RelatedMoviesAdapter
+    private lateinit var genresAdapter: GenresAdapter
+    lateinit var binding: ActivityMovieDetailsBinding
+    private var id = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,6 +104,9 @@ class MovieDetailsActivity : BaseActivity() {
         alertDialog?.show()
     }
 
+    /**
+     * Auxiliar que retorna um intent com o parâmetro ID
+     */
     companion object {
         private const val ID = "ID"
 

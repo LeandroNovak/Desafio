@@ -1,7 +1,6 @@
 package me.leandronovak.movies.view.ui
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_movies.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import me.leandronovak.movies.R
-import me.leandronovak.movies.data.model.Movie
 import me.leandronovak.movies.databinding.ActivityMoviesBinding
 import me.leandronovak.movies.view.adapter.MoviesAdapter
 import me.leandronovak.movies.view.ui.base.BaseActivity

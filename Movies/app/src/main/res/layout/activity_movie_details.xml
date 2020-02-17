@@ -26,7 +26,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
                 <!--Backdrop-->
                 <ImageView
                     android:id="@+id/backdrop_image_view"
@@ -129,9 +128,9 @@
                         android:layout_marginTop="10dp"
                         android:layout_toEndOf="@id/poster_image_view" />
                     <!--/Genres-->
-
                 </RelativeLayout>
 
+                <!--RelatedMovies-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -139,8 +138,9 @@
                     android:layout_marginTop="40dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="5dp"
-                    android:text="You may also like..."
-                    android:textSize="20sp" />
+                    android:text="@string/more_movies"
+                    android:textSize="20sp"
+                    android:visibility="@{viewModel.relatedMovies.empty ? View.GONE : View.VISIBLE}" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_movies"
@@ -151,6 +151,7 @@
                     android:layout_marginBottom="10dp"
                     android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}"
                     tools:listitem="@layout/item_movie" />
+                <!--/RelatedMovies-->
             </LinearLayout>
 
         </ScrollView>
