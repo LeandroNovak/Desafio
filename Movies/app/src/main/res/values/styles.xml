@@ -8,7 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/colorBackground</item>
         <item name="android:textViewStyle">@style/TextView</item>
-
     </style>
 
     <style name="TextView">

@@ -7,14 +7,19 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import kotlinx.android.synthetic.main.activity_movie_details.*
+import kotlinx.android.synthetic.main.activity_movies.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import me.leandronovak.movies.R
 import me.leandronovak.movies.databinding.ActivityMovieDetailsBinding
 import me.leandronovak.movies.view.adapter.GenresAdapter
+import me.leandronovak.movies.view.adapter.MoviesAdapter
+import me.leandronovak.movies.view.adapter.RelatedMoviesAdapter
 import me.leandronovak.movies.view.ui.base.BaseActivity
 import me.leandronovak.movies.viewmodel.MovieDetailsViewModel
 
@@ -23,6 +28,7 @@ class MovieDetailsActivity : BaseActivity() {
     private lateinit var movieDetailsViewModel: MovieDetailsViewModel
     lateinit var binding: ActivityMovieDetailsBinding
     private lateinit var genresAdapter: GenresAdapter
+    private lateinit var relatedMoviesAdapter: RelatedMoviesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,10 +44,18 @@ class MovieDetailsActivity : BaseActivity() {
 
         setupToolbar(toolbarMain, showHomeUp = true)
         setGenresRecyclerView()
+        setRelatedMoviesRecyclerView()
 
         movieDetailsViewModel.movieLiveData.observe(this, Observer {
             it?.let { movie ->
                 genresAdapter.setList(movie.genres)
+                movieDetailsViewModel.getRelatedMovies()
+            }
+        })
+
+        movieDetailsViewModel.relatedMovies.observe(this, Observer {
+            it?.let { movies ->
+                relatedMoviesAdapter.setList(movies)
             }
         })
 
@@ -61,6 +75,20 @@ class MovieDetailsActivity : BaseActivity() {
         genres_recycler_view.layoutManager = layoutManager
         genresAdapter = GenresAdapter(emptyList())
         genres_recycler_view.adapter = genresAdapter
+    }
+
+    private fun setRelatedMoviesRecyclerView() {
+        relatedMoviesAdapter = RelatedMoviesAdapter(emptyList()) { movie ->
+            movieDetailsViewModel.getMovie(movie.id)
+        }
+
+        recycler_movies.layoutManager = LinearLayoutManager(
+            this, LinearLayoutManager.HORIZONTAL,
+            false
+        )
+
+        recycler_movies.adapter = relatedMoviesAdapter
+        recycler_movies.setHasFixedSize(true)
     }
 
     private fun showAlertAndRetry() {

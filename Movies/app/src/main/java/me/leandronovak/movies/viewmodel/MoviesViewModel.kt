@@ -17,7 +17,6 @@ class MoviesViewModel : ViewModel() {
 
     fun getMovies() {
         isLoading.value = true
-
         ApiService.movieService.getMoviesList().enqueue(object : Callback<List<MovieResponse>> {
             override fun onResponse(
                 call: Call<List<MovieResponse>>,
@@ -43,7 +42,7 @@ class MoviesViewModel : ViewModel() {
 
             override fun onFailure(call: Call<List<MovieResponse>>, t: Throwable) {
                 error.value = t.message
-                Log.e("GET MOVIES", t.message!!)
+                Log.e("GET MOVIES", t.message?: "")
             }
         })
     }

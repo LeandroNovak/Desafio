@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/tools"
-    android:fitsSystemWindows="true">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -14,11 +13,12 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".view.ui.MovieDetailsActivity">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE }">
 
             <LinearLayout
@@ -36,7 +36,7 @@
                     android:background="@android:color/black"
                     android:contentDescription="@string/backdrop_description"
                     android:scaleType="fitCenter"
-                    bind:image="@{viewModel.movieLiveData.backdropUrl}" />
+                    tools:image="@{viewModel.movieLiveData.backdropUrl}" />
                 <!--/Backdrop-->
 
                 <!--Title-->
@@ -66,7 +66,7 @@
                         android:layout_width="120dp"
                         android:layout_height="180dp"
                         android:contentDescription="@string/poster_description"
-                        bind:image="@{viewModel.movieLiveData.posterUrl}" />
+                        tools:image="@{viewModel.movieLiveData.posterUrl}" />
                     <!--/Poster-->
 
                     <!--YearAndVote-->
@@ -79,7 +79,7 @@
                         android:layout_marginEnd="20dp"
                         android:layout_toEndOf="@id/poster_image_view"
                         android:textSize="18sp"
-                        bind:yearFromDateString="@{viewModel.movieLiveData.releaseDate}" />
+                        tools:yearFromDateString="@{viewModel.movieLiveData.releaseDate}" />
 
                     <TextView
                         android:id="@+id/vote_average_text_view"
@@ -96,8 +96,8 @@
                         android:id="@+id/vote_average_scale_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
                         android:layout_alignBottom="@+id/vote_average_text_view"
+                        android:layout_alignParentEnd="true"
                         android:gravity="start"
                         android:text="@string/vote_average_scale"
                         android:textSize="14sp" />
@@ -131,6 +131,26 @@
                     <!--/Genres-->
 
                 </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="You may also like..."
+                    android:textSize="20sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_movies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}"
+                    tools:listitem="@layout/item_movie" />
             </LinearLayout>
 
         </ScrollView>
