@@ -20,9 +20,8 @@
             android:id="@+id/recycler_movies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="4dp"
             android:paddingTop="?attr/actionBarSize"
-            android:paddingEnd="4dp"
+            android:paddingEnd="8dp"
             tools:listitem="@layout/item_movie"
             android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}"/>
 
