@@ -66,8 +66,8 @@ class MoviesActivity : BaseActivity() {
         val alertDialog: AlertDialog? = this.let {
             val builder = AlertDialog.Builder(it, R.style.AlertDialogTheme)
             builder.apply {
-                setTitle("Error")
-                setMessage("An error occurred while loading movies, check your connection and retry.")
+                setTitle(R.string.error)
+                setMessage(R.string.error_movies)
                 setPositiveButton(R.string.retry) { _, _ ->
                     moviesViewModel.getMovies()
                 }

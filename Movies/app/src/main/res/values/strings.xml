@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Movies</string>
+    <string name="error">Error</string>
 
     <string name="movies_title">Movies</string>
+    <string name="error_movies">An error occurred while loading movies, check your internet connection and retry.</string>
 
     <string name="backdrop_description">Backdrop</string>
     <string name="poster_description">Poster</string>
@@ -9,6 +11,6 @@
     <string name="original_title">Original Title</string>
     <string name="release_date">Release Date</string>
     <string name="vote_average">Vote Average</string>
-    <string name="ok">Ok</string>
     <string name="retry">Retry</string>
+    <string name="error_movie_details">An error occurred while loading movie details, check your internet connection and retry.</string>
 </resources>
