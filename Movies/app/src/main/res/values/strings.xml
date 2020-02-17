@@ -13,4 +13,5 @@
     <string name="vote_average">Vote Average</string>
     <string name="retry">Retry</string>
     <string name="error_movie_details">An error occurred while loading movie details, check your internet connection and retry.</string>
+    <string name="vote_average_scale">/10</string>
 </resources>

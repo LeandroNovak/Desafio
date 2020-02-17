@@ -3,6 +3,10 @@ package me.leandronovak.movies.data.rest
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import me.leandronovak.movies.data.model.Movie
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 @JsonClass(generateAdapter = true)
 data class MovieResponse(
@@ -34,6 +38,6 @@ data class MovieResponse(
         genres = this.genres ?: emptyList(),
         originalTitle = this.originalTitle ?: "Unavailable",
         overview = this.overview ?: "Unavailable",
-        releaseDate = this.releaseDate ?: "Unavailable"
+        releaseDate = releaseDate ?: ""
     )
 }
