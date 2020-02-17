@@ -17,7 +17,7 @@
 
     <style name="ToolbarTheme">
         <item name="android:background">@color/colorPrimary</item>
-        <item name="colorControlNormal">@color/toolbar_up_color</item>
+        <item name="colorControlNormal">@color/colorToolbarUp</item>
     </style>
 
 </resources>

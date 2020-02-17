@@ -12,8 +12,10 @@ import retrofit2.Response
 
 class MovieDetailsViewModel : ViewModel() {
     val movieLiveData: MutableLiveData<Movie> = MutableLiveData()
+    val isLoading : MutableLiveData<Boolean> = MutableLiveData()
 
     fun getMovie(id: Int) {
+        isLoading.value = true
         ApiService.movieService.getMovie(id).enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 when {
@@ -21,6 +23,8 @@ class MovieDetailsViewModel : ViewModel() {
                         response.body()?.let {movieResponse ->
                             val movie = movieResponse.getMovieModel()
                             movieLiveData.value = movie
+
+                            isLoading.value = false
                         }
                     }
                     //TODO: Implement failure
