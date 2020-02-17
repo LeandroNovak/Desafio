@@ -1,5 +1,7 @@
 package me.leandronovak.movies.view.ui
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -37,6 +39,12 @@ class MoviesActivity : BaseActivity() {
             }
         })
 
+        moviesViewModel.error.observe(this, Observer {
+            it?.let { _ ->
+                showAlertAndRetry()
+            }
+        })
+
         moviesViewModel.getMovies()
     }
 
@@ -52,5 +60,21 @@ class MoviesActivity : BaseActivity() {
             adapter = moviesAdapter
             setHasFixedSize(true)
         }
+    }
+
+    private fun showAlertAndRetry() {
+        val alertDialog: AlertDialog? = this.let {
+            val builder = AlertDialog.Builder(it, R.style.AlertDialogTheme)
+            builder.apply {
+                setTitle("Error")
+                setMessage("An error occurred while loading movies, check your connection and retry.")
+                setPositiveButton(R.string.retry) { _, _ ->
+                    moviesViewModel.getMovies()
+                }
+            }
+            builder.create()
+        }
+
+        alertDialog?.show()
     }
 }

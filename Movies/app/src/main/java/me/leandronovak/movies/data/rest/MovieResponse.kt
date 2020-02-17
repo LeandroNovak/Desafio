@@ -25,12 +25,11 @@ data class MovieResponse(
     @Json(name = "release_date")
     val releaseDate: String?
 ) {
-    //TODO: Update default posterUrl
     fun getMovieModel() = Movie (
         id = this.id,
         title = this.title ?: "Unavailable",
-        posterUrl = this.posterUrl ?: "Unavailable",
-        backdropUrl = this.backdropUrl ?: "Unavailable",
+        posterUrl = this.posterUrl ?: "",
+        backdropUrl = this.backdropUrl ?: "",
         voteAverage = this.voteAverage.toString(),
         genres = this.genres ?: emptyList(),
         originalTitle = this.originalTitle ?: "Unavailable",

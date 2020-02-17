@@ -3,6 +3,7 @@ package me.leandronovak.movies.data.model
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
+import me.leandronovak.movies.R
 
 data class Movie(
     val id: Int,
@@ -19,7 +20,7 @@ data class Movie(
         @JvmStatic
         @BindingAdapter("image")
         fun bindImage(imageView: ImageView, url: String?) {
-            if (url != null) {
+            if (url != null || url != "") {
                 Picasso.get().load(url).into(imageView)
             }
         }

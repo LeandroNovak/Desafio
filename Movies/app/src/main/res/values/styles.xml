@@ -19,4 +19,8 @@
         <item name="android:background">@color/colorPrimary</item>
         <item name="colorControlNormal">@color/colorToolbarUp</item>
     </style>
+
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/colorBackground</item>
+    </style>
 </resources>
