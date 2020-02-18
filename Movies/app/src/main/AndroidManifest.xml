@@ -18,8 +18,8 @@
             android:parentActivityName=".view.ui.MoviesActivity"
             android:configChanges="orientation|keyboardHidden">
         </activity>
-        <activity android:name=".view.ui.MoviesActivity">
-            android:configChanges="orientation|keyboardHidden"
+        <activity android:name=".view.ui.MoviesActivity"
+            android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
