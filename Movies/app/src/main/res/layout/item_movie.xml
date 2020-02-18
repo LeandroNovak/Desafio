@@ -12,7 +12,7 @@
             type="me.leandronovak.movies.data.model.Movie" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="6dp"
@@ -32,10 +32,13 @@
 
         <TextView
             android:layout_width="match_parent"
+            android:layout_below="@+id/poster_image_view"
+            android:layout_alignStart="@+id/poster_image_view"
+            android:layout_alignEnd="@+id/poster_image_view"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:layout_marginTop="5dp"
             android:maxLines="1"
             android:text="@{movie.title}" />
-    </LinearLayout>
+    </RelativeLayout>
 </layout>

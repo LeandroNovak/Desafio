@@ -1,11 +1,13 @@
 package me.leandronovak.movies.view.ui
 
 import android.app.AlertDialog
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import kotlinx.android.synthetic.main.activity_movies.*
 import kotlinx.android.synthetic.main.activity_movies.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import me.leandronovak.movies.R
