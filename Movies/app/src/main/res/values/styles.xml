@@ -19,7 +19,7 @@
         <item name="colorControlNormal">@color/colorToolbarUp</item>
     </style>
 
-    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:background">@color/colorBackground</item>
     </style>
 </resources>
